@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能小车项目展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        /* 新增：小组介绍模块 */
+        .team-intro {
+            background-color: #3498db;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .team-intro h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .team-intro p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        /* 导航栏 */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        /* 主内容区 */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+        .section-title::after {
+            content: "";
+            width: 60px;
+            height: 3px;
+            background-color: #3498db;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* 结构展示 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .gallery-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .gallery-item p {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        /* 视频区域 */
+        .video-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .video-container video {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        .function-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .function-video-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .function-video-card h3 {
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        /* 修复：视频适配卡片 */
+        .function-video-card video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-grow: 1;
+        }
+        /* 技术介绍 */
+        .tech-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        .tech-card {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .tech-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .tech-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .tech-card p {
+            line-height: 1.8;
+            color: #666;
+        }
+        /* 页脚 */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 新增：小组介绍模块 -->
+    <div class="team-intro">
+        <h2>小组名称：溯光</h2>
+        <p>小组成员（按字母排序）：梁正图 马致远 汪尘尘 王子有</p>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">智能小车项目</div>
+            <nav>
+                <ul>
+                    <li><a href="#structure">小车结构</a></li>
+                    <li><a href="#process">任务全程</a></li>
+                    <li><a href="#functions">功能特写</a></li>
+                    <li><a href="#tech">技术介绍</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- 1. 小车基本结构 -->
+        <section id="structure">
+            <h2 class="section-title">小车基本结构</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="car1.jpg" alt="小车结构1">
+                    <p>整体外观</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="car2.jpg" alt="小车结构2">
+                    <p>机械臂视角</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="car3.jpg" alt="小车结构3">
+                    <p>侧面结构</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="car4.jpg" alt="小车结构4">
+                    <p>料斗与齿轮结构</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 任务全过程 -->
+        <section id="process">
+            <h2 class="section-title">任务全过程演示</h2>
+            <div class="video-container">
+                <h3>小车完整任务执行视频</h3>
+                <video controls>
+                    <source src="full_task.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放
+                </video>
+            </div>
+        </section>
+
+        <!-- 3. 功能特写 -->
+        <section id="functions">
+            <h2 class="section-title">功能特写</h2>
+            <div class="function-videos">
+                <div class="function-video-card">
+                    <h3>避障功能</h3>
+                    <video controls>
+                        <source src="avoid_obstacle.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                </div>
+                <div class="function-video-card">
+                    <h3>拾物功能</h3>
+                    <video controls>
+                        <source src="pick_object.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                </div>
+                <div class="function-video-card">
+                    <h3>绕弯功能</h3>
+                    <video controls>
+                        <source src="turn.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                </div>
+                <div class="function-video-card">
+                    <h3>过十字路口</h3>
+                    <video controls>
+                        <source src="crossroad.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 技术介绍 -->
+        <section id="tech">
+            <h2 class="section-title">技术介绍</h2>
+            <div class="tech-section">
+                <div class="tech-card">
+                    <h3>视觉技术</h3>
+                    <p>
+                        采用**双算法协同感知**设计，视觉核心由上位机（RDK X5）统筹处理，依托摄像头完成环境视觉信号的实时采集与解析，针对不同场景适配专属视觉算法——障碍规避与物块识别环节搭载YOLOv8轻量化模型，实现对目标物块的精准分类、位置定位及障碍轮廓检测，保障对周边障碍物的快速感知与物块的有效识别；循迹行驶环节采用OpenCV机器视觉算法，通过图像灰度化、二值化、轮廓提取及重心定位等核心处理，完成对轨迹线的实时追踪与位置判定。视觉系统算法选型贴合小车运行算力需求，YOLOv8与OpenCV各司其职、无缝衔接，对采集的视觉信号实现分层处理、精准解析，为小车的避障决策、物块识别及循迹行驶提供了稳定、可靠的视觉感知依据，是小车实现自主环境交互与运动决策的核心支撑。
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>控制技术</h3>
+                    <p>
+                        采用上位机加下位机设计，上位机（RDK X5）负责接受摄像头的信号，使用yolov8模型实时识别物块，下位机（STM32C8T6）接受上位机传来的二进制信号，将信号转换为多个函数并执行，此次stm32资源分配合理，接口布置科学，四个定时器发挥最大作用，为整一台小车的流畅运行奠定了重要基础。
+                    </p>
+                </div>
+                <div class="tech-card">
+                    <h3>机械设计</h3>
+                    <p>
+                        本次冬令营小车机械结构设计以便捷、高效为核心原则，全方位适配实操调试与团队协作需求。整车外壳采用榫卯结构装配，大幅提升拆装便捷性，为后续结构调整与维护预留空间。
+                        <br><br>
+                        为配合电控及视觉组队友高效调试车辆，我们提前敲定小车核心尺寸，优先打印搭载基础功能结构的底板投入调试工作，加速项目整体推进。基于初期调试反馈，历经两次结构迭代，最终定型可兼容所有功能模块的小车底板，为后续组件集成奠定基础。
+                        <br><br>
+                        机械臂部分采用三舵机四自由度结构设计，设计前期先绘制完整草图，依据已确定的整车结构尺寸，精准定位机械臂与货架的安装位置。通过模拟pitch轴旋转角度，反复测算并确定各臂节尺寸参数，同时详细记录相关数据，为电控组队友的调试工作提供精准数据支撑，保障协作效率。
+                        <br><br>
+                        此外，车头两侧采用斜面设计，车壳头部及两侧预留合理镂空，一方面可促进空气流通，有效降低行驶阻力；另一方面，电机转速经过合理调控，避免因转速过高导致转弯失稳，兼顾动力与行驶稳定性。机械臂设计时重点考量舵机走线布局，通过优化线路路径防止旋转过程中线路缠绕，而车壳预留的镂空结构也为线路布置提供了便利，进一步提升整车结构的合理性与可靠性。
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>智能小车项目展示 &copy; 2026</p>
+    </footer>
+</body>
+</html>
